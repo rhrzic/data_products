@@ -10,11 +10,15 @@ library(shiny)
 shinyUI(fluidPage(
 
   # Application title
-  titlePanel("How old are you in the world?"),
+  titlePanel("Where do you fit in?"),
 
   # Sidebar with a slider input for number of bins
   sidebarLayout(
     sidebarPanel(
+      h3('Hello, friend!'),
+      h6('This simple application is the result of the Coursera class on Data products. 
+         It aims to offer some perspective on the world population and highlight the incredible
+         potential young people have to shape the future of our world.'),
       sliderInput("age",
                   "How old are you?",
                   min = 1,
@@ -28,7 +32,8 @@ shinyUI(fluidPage(
 
     # Show a plot of the generated distribution
     mainPanel(
-      plotOutput("agePlot")
+      plotOutput("agePlot"),
+      h6('Source of data: esa.un.org')
     )
   )
 ))
