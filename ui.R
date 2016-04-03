@@ -23,6 +23,9 @@ shinyUI(fluidPage(
       h4('Methodology'),
       h6('The application then uses UN age data to calculate the percentage of people 
           worldwide you are older than and displays your position on the World Age Histogram.'),
+      h6('This simple application is the result of the Coursera class on Data products. 
+         It aims to offer some perspective on the world population and highlight the incredible
+         potential young people have to shape the future of our world.'),
       sliderInput("age",
                   "How old are you?",
                   min = 1,
