@@ -1,0 +1,49 @@
+A tiny app for a big world.
+========================================================
+author: Rok Hrzic
+date: April 3rd 2016
+autosize: true
+transition: linear
+
+Introduction
+========================================================
+
+This application pitch has been created for the Data products course on Coursera.
+
+The aim of our tiny app is simple: to open our eyes to how trully young the world is and show us where we might fit in.
+
+I owe my gratitude to the United Nations' Department of Economic and Social Affairs and Population Division for making their data freely available online. For more information: http://esa.un.org/.
+
+Methodology
+========================================================
+
+The application asks the user to input their age via a slider. The application then determines the age group of the user and feeds back two pieces of information:
+
+- the (approximate) percentage of the world's population the user is older than
+- the position of that age group on a World Age Histogram
+
+World Age Histogram
+========================================================
+```{r, echo=FALSE}
+library(ggplot2)
+
+agefreq <- c(670928, 637449, 607431,590069,603509,609793,551085,497756,485058,454043,401753,339691,292727,215047,153207,114652,71450,37062,13389,2922,451)
+agegroups <- factor(1:21, labels=c("0-4","5-9","10-14","15-19","20-24","25-29","30-34","35-39","40-44","45-49","50-54","55-59","60-64","65-69","70-74","75-79","80-84","85-89","90-94","95-100", "100+"))
+agedata <- data.frame(agegroup=agegroups, agefreq=agefreq*1000)
+
+g=ggplot(agedata,aes(x=agegroup,y=agefreq))
+g=g+geom_bar(stat = "identity", aes(fill=agegroup))
+g=g+scale_fill_grey(start = 0.2, end = 0.8) 
+g=g+labs(title ="World Age Histogram", x = "Age Group", y = "Number of People") 
+g=g+ theme(legend.position="none")
+g+geom_vline(xintercept = 5,colour="orange")
+```
+
+Where do you fit in?
+========================================================
+So, where can you find this fun little thought experiment?
+Visit rokhrzic.shinyapps.io/data_products/
+
+Complete source: github.com/rhrzic/data_products
+
+![alt text](./slides_pitch-figure/app.png)
